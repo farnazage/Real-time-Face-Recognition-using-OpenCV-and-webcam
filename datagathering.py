@@ -3,10 +3,7 @@
 import cv2
 import os
 
-os.chdir("CurrentPath")
-
 Detection = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
-
 cam= cv2.VideoCapture(0)
 
 id = input('\n enter user id end press Enter: ')
