@@ -5,4 +5,13 @@ Face detection means that the machine can identify that there is a human face pr
 I use OpenCV library in Python to do a real-time Face recognition using the computer webcam.
 
 
+https://opencv.org/
+
+Face detection is done using feature-based cascade classifiers.
+https://docs.opencv.org/3.3.0/d7/d8b/tutorial_py_face_detection.html
+
+haarcascade_frontalface_default.xml: 
+https://github.com/opencv/opencv/blob/master/data/haarcascades/haarcascade_frontalface_default.xml
+
+
 
