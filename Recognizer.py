@@ -3,7 +3,7 @@ import numpy as np
 from PIL import Image
 import os
 
-path='datagathering'
+path='data'
 
 recognizer = cv2.face.LBPHFaceRecognizer_create()
 detector = cv2.CascadeClassifier("haarcascade_frontalface_default.xml");
@@ -30,7 +30,7 @@ faces,ids = imgsandlables (path)
 recognizer.train(faces, np.array(ids))
 
 id = 0
-names = ['None', 'First persons' name', ... , 'last person's name'] 
+names = ['None', 'Farnaz','Alex'] 
 
 
 cam= cv2.VideoCapture(0)
@@ -45,10 +45,19 @@ while True:
     for(x,y,w,h) in faces:
         cv2.rectangle(img, (x,y), (x+w,y+h), (0,255,0), 2)
 
-        id, _ = recognizer.predict(gray[y:y+h,x:x+w])
-        id = names[id]
+        id, confidence = recognizer.predict(gray[y:y+h,x:x+w])
 
-        cv2.putText( img, str(id), (x-5,y-5), cv2.FONT_HERSHEY_SIMPLEX , 1, (255,255,0), 2)
+        # Check if confidence is less them 100 ==> "0" is perfect match 
+        if (confidence < 100):
+            id = names[id]
+            confidence = "  {0}%".format(round(100 - confidence))
+        else:
+            id = "I dont know who this is :)"
+            confidence = "  {0}%".format(round(100 - confidence))
+        
+        cv2.putText(img, str(id), (x-5,y-5), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,0), 2)
+        cv2.putText(img, str(confidence), (x+5,y+h-5), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,0), 2) 
+
 
     cv2.imshow('camera',img) 
 
