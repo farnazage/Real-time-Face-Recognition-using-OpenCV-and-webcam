@@ -6,7 +6,7 @@
 import cv2
 detector = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 cam= cv2.VideoCapture(0)
-
+# each user has their own id for example Farnaz's id is 1 and Alex's id is 2
 id = input('\n enter user id end press Enter: ')
 count = 0
 while(True):
