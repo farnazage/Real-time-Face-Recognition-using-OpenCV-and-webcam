@@ -15,7 +15,7 @@ haarcascade_frontalface_default.xml should be downloaded to the project's direct
 
 (the project directory should containg the python scripts and the haarcascade part.)
 
-then the subdirectory for datagathering should be created.
+then the "subdirectory" for datagathering should be created.
 
 mkdir datagathering
 
